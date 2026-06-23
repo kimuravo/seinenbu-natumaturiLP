@@ -19,6 +19,7 @@
     <meta property="og:description" content="2026年8月8日、須田公園で開催。家族や友だちと夏の思い出をつくろう。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/reference-poster.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260622">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Mochiy+Pop+P+One&family=Murecho:wght@100..900&display=swap" rel="stylesheet">
@@ -26,7 +27,7 @@
 </head>
   <body>
     <header class="site-header" aria-label="イベント概要">
-      <a class="site-logo" href="#intro">こども夏祭り</a>
+      <a class="site-logo" href="#intro">かもであそぼう！こども夏祭り！~TSUMUGU2~</a>
       <button class="nav-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
         <span></span>
         <span></span>
@@ -61,6 +62,15 @@
           <img class="hero-characters__boy" src="image/hero-boy.png" alt="">
           <img class="hero-characters__girl" src="image/hero-girl-tacky.png" alt="">
         </div>
+        <div class="takechan takechan--hero" aria-hidden="true">
+          <img class="takechan__image" src="image/takenoko-tacky.png" alt="" onload="this.closest('.takechan').classList.add('takechan--photo')" onerror="this.remove()">
+          <span class="takechan__leaf takechan__leaf--one"></span>
+          <span class="takechan__body"></span>
+          <span class="takechan__hat"></span>
+          <span class="takechan__eye takechan__eye--left"></span>
+          <span class="takechan__eye takechan__eye--right"></span>
+          <span class="takechan__mouth"></span>
+        </div>
         <div class="hero-area-links" aria-label="会場エリアへのショートカット">
           <a class="hero-area hero-area--food" href="#shops">グルメ屋台<br>エリア</a>
           <a class="hero-area hero-area--truck" href="#shops">キッチンカー<br>エリア</a>
@@ -90,11 +100,17 @@
         </div>
         <div class="section__inner intro__grid">
           <div>
-            <p class="eyebrow">みんなでつくる、こどもの笑顔！</p>
-            <h2>木津川市最大級の夏祭りイベント</h2>
+            <p class="eyebrow">木津川市加茂町で開催！こどもメインの夏祭りイベント</p>
+            <h2>2026年8月8日（土）木津川市加茂に“あの”夏祭りが帰ってくる!</h2>
             <p>
-              楽しい遊びやおいしい食べもの、ワクワクの縁日コーナーが盛りだくさん。
-              家族や友だちと一緒に、思い出に残る夏の一日を過ごそう。
+              担い手不足や高齢化により、子どもが参加できる地域のイベントが年々減っています。
+              そんな夏に、木津川市商工会青年部が主体となって、地域の子どもたちに本物の夏祭りを届けます。
+            </p>
+            <p>
+              グルメ屋台・縁日あそび・暗闇職業体験・アートイベントなど、家族みんなで楽しめるコンテンツが盛りだくさん。
+            </p>
+            <p>
+              夏休みの特別な思い出を、加茂の須田公園でつくりましょう！
             </p>
           </div>
           <div class="notice">
@@ -127,42 +143,29 @@
           <div class="feature-grid">
             <article class="feature-card">
               <span>01</span>
-              <h3>ぐるっと回る</h3>
-              <p>まずは会場を一周。近日公開の屋台やあそびを見つけながら、行きたい場所を決めよう。</p>
+              <figure class="feature-card__photo">
+                <img src="image/work-experience.png" alt="フラワーアレンジメントやカメラマン体験を楽しむこどもたち">
+              </figure>
+              <h3>知って楽しむ！</h3>
+              <p><strong>4種類の職業体験をご用意！たっくさん体験！</strong></p>
             </article>
             <article class="feature-card">
               <span>02</span>
-              <h3>好きから選ぶ</h3>
-              <p>食べたいもの、遊びたいもの、体験したいことから自由に選んで楽しもう。</p>
+              <figure class="feature-card__photo">
+                <img src="image/kurayami-canvas.jpg" alt="暗闇の中で光るアートイベントの様子">
+              </figure>
+              <h3>🎯 遊んで楽しむ！</h3>
+              <p><strong>暗闇だからこそできること！楽しいイベントでみんな仲良く遊ぼう！</strong></p>
             </article>
             <article class="feature-card">
               <span>03</span>
-              <h3>笑顔で満足</h3>
-              <p>最後は写真を撮って、家族や友だちと「楽しかったね」で締めくくろう。</p>
+              <figure class="feature-card__photo">
+                <img src="image/food-stalls-tacky.png" alt="屋台グルメを楽しむこどもたちとたけのこタッキー">
+              </figure>
+              <h3>🍧 味わって楽しむ</h3>
+              <p><strong>グルメ屋台やキッチンカーが大集合！</strong></p>
+              <p>お祭りならではの“食”で満たされよう！</p>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section photo-section" aria-label="イベントの雰囲気">
-        <div class="section__inner">
-          <div class="section-title section-title--red">
-            <span>夏祭りのワクワク感</span>
-            <h2>夜の灯り、屋台、家族で過ごす時間</h2>
-          </div>
-          <div class="photo-grid">
-            <figure class="photo-card photo-card--wide">
-              <img src="image/photo-lanterns.png" alt="夜祭りで灯る日本の提灯">
-              <figcaption>提灯が灯る、夏祭りらしい夜の雰囲気</figcaption>
-            </figure>
-            <figure class="photo-card">
-              <img src="image/photo-food-stalls.png" alt="夜の屋台で調理をする人たち">
-              <figcaption>屋台グルメを楽しむ時間</figcaption>
-            </figure>
-            <figure class="photo-card">
-              <img src="image/photo-family.png" alt="公園でピクニックを楽しむ家族">
-              <figcaption>家族で過ごす公園イベント</figcaption>
-            </figure>
           </div>
         </div>
       </section>
@@ -234,7 +237,6 @@
               <h2>須田公園</h2>
             </div>
             <p class="access-lead">JR加茂駅から徒歩5〜10分</p>
-            <p>駐車場に限りがあるため、できるだけ公共交通機関をご利用ください。</p>
           </div>
           <div class="google-map" aria-label="須田公園のGoogleマップ">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.1706078600187!2d135.8698334!3d34.7512949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60013f2947520063%3A0x3b66e77e0d72526!2z6aCI55Sw5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1779347066259!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="須田公園のGoogleマップ"></iframe>
@@ -242,6 +244,51 @@
         </div>
       </section>
 
+      <section class="section faq-section">
+        <div class="section__inner">
+          <div class="section-title section-title--red">
+            <span>FAQ</span>
+            <h2>よくある質問</h2>
+          </div>
+          <div class="faq-list">
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">
+                <span class="faq-question__text">駐車場はありますか？</span>
+                <span class="faq-question__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-1" hidden>
+                <p>駐車場のご用意はありませんので、お近くのコインパーキングを使用していただくか、公共機関でお越しください。</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">
+                <span class="faq-question__text">たけのこタッキーは来ますか？</span>
+                <span class="faq-question__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-2" hidden>
+                <p>タッキーは皆が願ってくれたら来るかもね！！</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">
+                <span class="faq-question__text">たけのこ新商品（シークレット）ってなんですか？</span>
+                <span class="faq-question__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-3" hidden>
+                <p>現在木津川市商工会青年部では、地域の特産品である、“たけのこ”を使って商品開発をしています。商品自体は当日までのお楽しみですが、応援してくれたらふるさと納税になるチャンス！ぜひ応援してくださいね！</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4">
+                <span class="faq-question__text">お金はかかりますか？</span>
+                <span class="faq-question__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-4" hidden>
+                <p>入場は無料ですが、屋台など一部お金がかかります。</p>
+              </div>
+            </article>
+          </div>        </div>
+      </section>
       <section class="section sns-section">
         <div class="section__inner sns-grid">
           <div>
@@ -259,14 +306,21 @@
               <span class="takechan__mouth"></span>
             </div>
           </div>
-          <a class="instagram-cta" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagramを確認する</a>
+          <a class="instagram-cta" href="https://www.instagram.com/kidugawa.seinenn" target="_blank" rel="noopener">Instagramを確認する</a>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>木津川市商工会青年部</p>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener">お問い合わせ</a>
+    <footer class="site-footer site-footer--contact">
+      <div class="footer-contact">
+        <h2>主催・お問い合わせ</h2>
+        <p>主催：木津川市商工会青年部</p>
+        <p>後援：京都新聞</p>
+        <p>後援申請中：木津川市／木津川市教育委員会</p>
+        <p>お問い合わせ：木津川市商工会青年部 夏祭り実行委員会</p>
+        <p>TEL：0774-72-3801（事務局：田崎 / 松田 宛）</p>
+        <p>受付時間：平日 9:00〜17:00</p>
+      </div>
     </footer>
 
     <nav class="countdown-nav" aria-label="夏祭りカウントダウン">
@@ -281,6 +335,6 @@
     <script src="js/lenis.min.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=20260623-faq"></script>
   </body>
 </html>

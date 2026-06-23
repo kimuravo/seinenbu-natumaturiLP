@@ -87,6 +87,20 @@ modalCloseButtons.forEach((button) => {
   button.addEventListener("click", closeModal);
 });
 
+
+document.querySelectorAll(".faq-question").forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".faq-item");
+    const answer = document.getElementById(button.getAttribute("aria-controls"));
+    const icon = button.querySelector(".faq-question__icon");
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+
+    button.setAttribute("aria-expanded", String(!isOpen));
+    item?.classList.toggle("is-open", !isOpen);
+    if (icon) icon.textContent = isOpen ? "+" : "-";
+    if (answer) answer.hidden = isOpen;
+  });
+});
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();
   if (event.key === "Escape") closeNav();
