@@ -3002,3 +3002,899 @@ body :where(h1, h2, h3, .hero-title, .eyebrow, .notice strong, .solve-copy, .sec
     padding: 18px 18px 22px 48px;
   }
 }
+/* 2026-06-25: first-view fit and Tacky credit */
+.hero {
+  height: calc(100svh - 70px);
+  min-height: calc(100svh - 70px);
+  padding: 0 16px;
+}
+
+.hero::before {
+  display: none;
+}
+
+.hero__content {
+  min-height: 100%;
+}
+
+.hero .primary-cta {
+  position: absolute;
+  left: 50%;
+  top: clamp(250px, 38svh, 390px);
+  z-index: 8;
+  display: inline-flex;
+  transform: translateX(-50%);
+  margin-top: 0;
+  min-height: 50px;
+  padding: 10px 28px;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, .8);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .28);
+  white-space: nowrap;
+}
+
+.takechan-credit {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 4px);
+  z-index: 6;
+  width: max-content;
+  max-width: 190px;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .62);
+  color: #fff;
+  font-size: clamp(.72rem, 1.6vw, .9rem);
+  font-weight: 700 !important;
+  line-height: 1.35;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .7);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.hero-area-links {
+  bottom: clamp(42px, 7svh, 72px);
+}
+
+.scroll-cue {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    height: calc(100svh - 72px);
+    min-height: calc(100svh - 72px);
+    padding: 0 12px;
+  }
+
+  .hero .primary-cta {
+    top: clamp(208px, 34svh, 310px);
+    min-height: 46px;
+    padding-inline: 24px;
+    font-size: .95rem;
+  }
+
+  .takechan--hero {
+    bottom: 128px;
+  }
+
+  .takechan-credit {
+    max-width: 160px;
+    font-size: .68rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    height: calc(100svh - 72px);
+    min-height: calc(100svh - 72px);
+    padding: 0 8px;
+  }
+
+  .hero-title-image {
+    top: clamp(8px, 1.8svh, 16px);
+    width: min(500px, calc(100vw - 18px));
+  }
+
+  .hero .primary-cta {
+    top: clamp(210px, 35svh, 280px);
+    min-height: 42px;
+    padding: 8px 20px;
+    font-size: .74rem;
+  }
+
+  .hero-characters__boy {
+    left: -44px;
+    bottom: 122px;
+    height: min(46svh, 350px);
+  }
+
+  .hero-characters__girl {
+    right: -70px;
+    bottom: 120px;
+    height: min(39svh, 310px);
+  }
+
+  .takechan--hero {
+    right: 50%;
+    bottom: 190px;
+    --mascot-scale: .46;
+    transform: translateX(50%);
+  }
+
+  .takechan-credit {
+    max-width: 136px;
+    padding: 4px 8px;
+    font-size: .62rem;
+    line-height: 1.25;
+  }
+
+  .hero-area-links {
+    bottom: 86px;
+    width: min(460px, calc(100% - 16px));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .hero-area {
+    min-height: 50px;
+    padding: 6px 3px;
+    border-radius: 12px;
+    font-size: clamp(.52rem, 2.2vw, .68rem);
+    line-height: 1.16;
+    box-shadow: 0 5px 0 rgba(0, 0, 0, .22);
+  }
+}
+/* 2026-06-25: Tacky chatbot */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tacky-chatbot {
+  position: fixed;
+  right: 18px;
+  bottom: 104px;
+  z-index: 45;
+  font-family: var(--font-body);
+}
+
+.tacky-chatbot__launcher {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: center;
+  min-height: 62px;
+  padding: 8px 14px 8px 8px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  background: #ffd83d;
+  color: #071019;
+  font: inherit;
+  font-weight: 700 !important;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: 0 10px 0 rgba(7, 16, 25, .26), 0 18px 30px rgba(7, 16, 25, .22);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.tacky-chatbot__launcher:hover,
+.tacky-chatbot__launcher:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 0 rgba(7, 16, 25, .22), 0 22px 34px rgba(7, 16, 25, .26);
+  outline: none;
+}
+
+.tacky-chatbot__launcher img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 6px rgba(91, 55, 12, .28));
+}
+
+.tacky-chatbot__panel {
+  position: absolute;
+  right: 0;
+  bottom: 98px;
+  width: min(360px, calc(100vw - 24px));
+  overflow: hidden;
+  border: 3px solid #0b57a8;
+  border-radius: 22px;
+  background: #fffdf5;
+  box-shadow: 0 22px 44px rgba(3, 22, 56, .28);
+  transform: translateY(14px) scale(.96);
+  transform-origin: right bottom;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
+}
+
+.tacky-chatbot.is-open .tacky-chatbot__panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tacky-chatbot__header {
+  display: grid;
+  grid-template-columns: 54px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  background: #0b57a8;
+  color: #fff;
+}
+
+.tacky-chatbot__header img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, .25));
+}
+
+.tacky-chatbot__header p,
+.tacky-chatbot__header strong {
+  margin: 0;
+  line-height: 1.25;
+}
+
+.tacky-chatbot__header p {
+  font-size: .78rem;
+  opacity: .92;
+}
+
+.tacky-chatbot__header strong {
+  display: block;
+  font-size: 1.08rem;
+  font-weight: 700 !important;
+}
+
+.tacky-chatbot__close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .18);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tacky-chatbot__messages {
+  display: grid;
+  gap: 10px;
+  max-height: 280px;
+  padding: 14px;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(255, 216, 61, .22), transparent 7rem),
+    #fffdf5;
+}
+
+.tacky-chatbot__message {
+  width: fit-content;
+  max-width: 88%;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 16px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.tacky-chatbot__message--bot {
+  justify-self: start;
+  border-bottom-left-radius: 5px;
+  background: #eaf5ff;
+  color: #14314f;
+}
+
+.tacky-chatbot__message--user {
+  justify-self: end;
+  border-bottom-right-radius: 5px;
+  background: #ffd83d;
+  color: #071019;
+}
+
+.tacky-chatbot__quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 14px 12px;
+  background: #fffdf5;
+}
+
+.tacky-chatbot__quick button {
+  border: 0;
+  border-radius: 999px;
+  background: #0b57a8;
+  color: #fff;
+  padding: 7px 10px;
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+
+.tacky-chatbot__form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(11, 87, 168, .14);
+  background: #fff;
+}
+
+.tacky-chatbot__form input {
+  min-width: 0;
+  border: 2px solid rgba(11, 87, 168, .24);
+  border-radius: 999px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.tacky-chatbot__form button {
+  border: 0;
+  border-radius: 999px;
+  background: #d80f1f;
+  color: #fff;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .tacky-chatbot {
+    right: 10px;
+    bottom: 98px;
+  }
+
+  .tacky-chatbot__launcher {
+    min-height: 54px;
+    padding: 6px 11px 6px 6px;
+    font-size: .78rem;
+  }
+
+  .tacky-chatbot__launcher img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .tacky-chatbot__panel {
+    bottom: 70px;
+  }
+
+  .tacky-chatbot__messages {
+    max-height: 240px;
+  }
+}
+/* 2026-06-25: chatbot mascot cutout and layout centering */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.site-header,
+main,
+.hero,
+.section,
+.site-footer {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero .primary-cta {
+  display: none !important;
+}
+
+.takechan--hero,
+.takechan-credit {
+  display: none !important;
+}
+
+.hero-area-links {
+  left: 50%;
+  right: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tacky-chatbot {
+  right: max(16px, env(safe-area-inset-right));
+}
+
+.tacky-chatbot__launcher {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  padding: 6px;
+  overflow: visible;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 12px 18px rgba(7, 16, 25, .28));
+}
+
+.tacky-chatbot__launcher:hover,
+.tacky-chatbot__launcher:focus-visible {
+  transform: translateY(-4px) rotate(-2deg);
+  box-shadow: none;
+  filter: drop-shadow(0 16px 22px rgba(7, 16, 25, .32));
+  outline: none;
+}
+
+.tacky-chatbot__launcher img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: none;
+}
+
+@media (max-width: 520px) {
+  .tacky-chatbot {
+    right: max(10px, env(safe-area-inset-right));
+  }
+
+  .hero-area-links {
+    left: 50%;
+    right: auto;
+    width: min(460px, calc(100% - 16px));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tacky-chatbot__launcher {
+    width: 72px;
+    padding: 4px;
+  }
+}
+
+/* 2026-06-25: four area buttons and chatbot label */
+.hero-area-links {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.hero-area--event {
+  background: #ef5f8d;
+}
+
+.coming-zone-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.coming-zone-card {
+  position: relative;
+  min-height: 280px;
+  padding: 28px 20px;
+  overflow: hidden;
+  border: 4px solid #fff;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fffdf3 0%, #fff6dc 100%);
+  box-shadow: 0 18px 0 rgba(14, 84, 92, .12), 0 22px 38px rgba(24, 56, 77, .12);
+  text-align: left;
+  scroll-margin-top: 96px;
+}
+
+.coming-zone-card::before {
+  content: "COMING SOON";
+  position: absolute;
+  right: -28px;
+  bottom: 18px;
+  color: rgba(11, 87, 168, .08);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 4.4rem);
+  font-weight: 700;
+  line-height: .8;
+  transform: rotate(-8deg);
+  white-space: nowrap;
+}
+
+.coming-zone-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.coming-zone-card h3 {
+  margin: 16px 0 12px;
+  color: #0b57a8;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.coming-zone-card p:last-child {
+  margin: 0;
+  color: #223040;
+  line-height: 1.8;
+}
+
+.coming-zone-card--gourmet {
+  background: linear-gradient(180deg, #fff3e4 0%, #ffe4d8 100%);
+}
+
+.coming-zone-card--seinembu {
+  background: linear-gradient(180deg, #eaf4ff 0%, #dceeff 100%);
+}
+
+.coming-zone-card--work {
+  background: linear-gradient(180deg, #effadd 0%, #e3f5c7 100%);
+}
+
+.coming-zone-card--event {
+  background: linear-gradient(180deg, #fff0f7 0%, #ffe0ed 100%);
+}
+
+.pagetop {
+  right: 18px;
+  bottom: 88px;
+  z-index: 58;
+}
+
+.tacky-chatbot {
+  bottom: 164px;
+  z-index: 60;
+}
+
+.tacky-chatbot__launcher {
+  width: 108px;
+  aspect-ratio: auto;
+  gap: 4px;
+}
+
+.tacky-chatbot__launcher img {
+  width: 82px;
+  height: 82px;
+}
+
+.tacky-chatbot__label {
+  display: inline-grid;
+  place-items: center;
+  min-height: 30px;
+  padding: 5px 12px 6px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #d80f1f;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 5px 0 rgba(7, 16, 25, .2);
+  white-space: nowrap;
+}
+
+.tacky-chatbot__panel {
+  bottom: 128px;
+}
+
+@media (max-width: 860px) {
+  .coming-zone-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-area-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-area {
+    min-height: 48px;
+    font-size: .72rem;
+  }
+
+  .coming-zone-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .coming-zone-card {
+    min-height: 220px;
+    padding: 24px 18px;
+  }
+
+  .pagetop {
+    right: 10px;
+    bottom: 98px;
+  }
+
+  .tacky-chatbot {
+    bottom: 142px;
+    right: max(8px, env(safe-area-inset-right));
+  }
+
+  .tacky-chatbot__launcher {
+    width: 96px;
+    padding: 2px;
+  }
+
+  .tacky-chatbot__launcher img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .tacky-chatbot__label {
+    min-height: 27px;
+    padding: 5px 9px;
+    font-size: .7rem;
+  }
+
+  .tacky-chatbot__panel {
+    bottom: 112px;
+  }
+}
+
+/* 2026-06-25: show Tacky body plus ask button */
+.tacky-chatbot__launcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 118px;
+  height: auto;
+  min-height: 132px;
+  padding: 0;
+  gap: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+}
+
+.tacky-chatbot__launcher:hover,
+.tacky-chatbot__launcher:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: none;
+  filter: none;
+}
+
+.tacky-chatbot__launcher img {
+  display: block;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto -4px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 14px rgba(7, 16, 25, .28));
+}
+
+.tacky-chatbot__label {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  min-height: 32px;
+  padding: 6px 13px 7px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #d80f1f;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 5px 0 rgba(7, 16, 25, .2), 0 10px 16px rgba(7, 16, 25, .2);
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .tacky-chatbot__launcher {
+    width: 108px;
+    min-height: 118px;
+    padding: 0;
+  }
+
+  .tacky-chatbot__launcher img {
+    width: 82px;
+    height: 82px;
+  }
+
+  .tacky-chatbot__label {
+    min-height: 29px;
+    padding: 5px 10px 6px;
+    font-size: .7rem;
+  }
+}
+
+/* 2026-06-25: reveal Tacky after first view */
+.tacky-chatbot {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(18px) scale(.94);
+  transition: opacity .28s ease, transform .28s ease, visibility .28s ease;
+}
+
+.tacky-chatbot.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* 2026-06-25: remove page-top button and place Tacky lower right */
+.pagetop {
+  display: none !important;
+}
+
+.tacky-chatbot {
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+.tacky-chatbot__panel {
+  bottom: 128px;
+}
+
+@media (max-width: 520px) {
+  .tacky-chatbot {
+    right: max(8px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .tacky-chatbot__panel {
+    bottom: 112px;
+  }
+}
+
+/* 2026-06-26: lift Tacky above countdown bar */
+.tacky-chatbot {
+  bottom: max(72px, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 520px) {
+  .tacky-chatbot {
+    bottom: max(68px, env(safe-area-inset-bottom));
+  }
+}
+
+/* 2026-06-26: keep Tacky clear of countdown bar */
+.tacky-chatbot {
+  bottom: max(100px, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 520px) {
+  .tacky-chatbot {
+    bottom: max(96px, env(safe-area-inset-bottom));
+  }
+}
+
+/* 2026-06-26: weather date note */
+.date-note {
+  display: inline-block;
+  margin-top: 6px;
+  color: #31445a;
+  font-size: .74rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* 2026-06-26: enlarge first-view children by about 30% */
+.hero-characters__boy {
+  height: min(91vh, 897px);
+}
+
+.hero-characters__girl {
+  height: min(80.6vh, 793px);
+}
+
+@media (max-width: 860px) {
+  .hero-characters__boy {
+    height: min(65vh, 507px);
+  }
+
+  .hero-characters__girl {
+    height: min(55.9vh, 442px);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-characters__boy {
+    height: min(59.8svh, 455px);
+  }
+
+  .hero-characters__girl {
+    height: min(50.7svh, 403px);
+  }
+}
+
+
+/* 2026-06-26: first-view character placement */
+.takechan--hero {
+  display: none !important;
+  right: max(8px, calc(50% - 570px));
+  bottom: 98px;
+  --mascot-scale: .64;
+  z-index: 5;
+}
+
+.hero-characters__boy {
+  left: max(-18px, calc(50% - 660px));
+  bottom: 72px;
+  height: min(62vh, 610px);
+}
+
+.hero-characters__girl {
+  right: max(-40px, calc(50% - 700px));
+  bottom: 68px;
+  height: min(52vh, 520px);
+}
+
+@media (max-width: 860px) {
+  .takechan--hero {
+    right: 74px;
+    bottom: 132px;
+    --mascot-scale: .42;
+    transform: none;
+  }
+
+  .hero-characters__boy {
+    left: -36px;
+    bottom: 112px;
+    height: min(48vh, 420px);
+  }
+
+  .hero-characters__girl {
+    right: -70px;
+    bottom: 108px;
+    height: min(42vh, 360px);
+  }
+}
+
+@media (max-width: 520px) {
+  .takechan--hero {
+    right: 78px;
+    bottom: 142px;
+    --mascot-scale: .34;
+    transform: none;
+  }
+
+  .hero-characters__boy {
+    left: -36px;
+    bottom: 118px;
+    height: min(47svh, 356px);
+  }
+
+  .hero-characters__girl {
+    right: -60px;
+    bottom: 116px;
+    height: min(40svh, 318px);
+  }
+}
+
+.weather-inline-note {
+  display: inline-block;
+  font-size: .78em;
+  line-height: 1.45;
+}
+
+/* 2026-06-26: keep first-view title visible above characters */
+.hero-title-image {
+  z-index: 12;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.hero-characters {
+  z-index: 4;
+}

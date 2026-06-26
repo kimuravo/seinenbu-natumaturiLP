@@ -101,9 +101,121 @@ document.querySelectorAll(".faq-question").forEach((button) => {
     if (answer) answer.hidden = isOpen;
   });
 });
+
+const tackyChatbot = document.querySelector(".tacky-chatbot");
+const tackyLauncher = document.querySelector(".tacky-chatbot__launcher");
+const tackyPanel = document.querySelector(".tacky-chatbot__panel");
+const tackyClose = document.querySelector(".tacky-chatbot__close");
+const tackyMessages = document.querySelector(".tacky-chatbot__messages");
+const tackyForm = document.querySelector(".tacky-chatbot__form");
+const tackyInput = document.querySelector("#tacky-chatbot-input");
+
+const tackyAnswers = [
+  {
+    keywords: ["開催", "日時", "日程", "いつ", "時間"],
+    answer: "開催日は2026年8月8日（土）※小雨決行・荒天中止　9日（日）予備日、時間は16:00〜20:30だよ！",
+  },
+  {
+    keywords: ["場所", "会場", "どこ", "須田", "公園"],
+    answer: "会場は木津川市加茂町の須田公園だよ。JR加茂駅から徒歩5〜10分です！",
+  },
+  {
+    keywords: ["アクセス", "駅", "行き方", "電車"],
+    answer: "JR加茂駅から徒歩5〜10分だよ。アクセス情報のところに地図もあるから見てみてね！",
+  },
+  {
+    keywords: ["駐車", "車", "パーキング"],
+    answer: "専用駐車場のご用意はありません。お近くのコインパーキング、または公共交通機関をご利用ください。",
+  },
+  {
+    keywords: ["タッキー", "たけのこ", "来る", "キャラ"],
+    answer: "タッキーは皆が願ってくれたら来るかもね！！会場で会えたらラッキー！",
+  },
+  {
+    keywords: ["お金", "料金", "入場", "無料"],
+    answer: "入場は無料です！屋台など一部お金がかかるコーナーがあります。",
+  },
+  {
+    keywords: ["屋台", "食べ物", "グルメ", "キッチンカー"],
+    answer: "グルメ屋台やキッチンカーが大集合予定！お祭りならではの“食”を楽しんでね。",
+  },
+  {
+    keywords: ["遊び", "縁日", "体験", "イベント", "職業"],
+    answer: "縁日あそび、暗闇職業体験、アートイベントなど、家族みんなで楽しめる内容を準備中です！",
+  },
+];
+
+const addTackyMessage = (message, type = "bot") => {
+  if (!tackyMessages) return;
+  const bubble = document.createElement("p");
+  bubble.className = `tacky-chatbot__message tacky-chatbot__message--${type}`;
+  bubble.textContent = message;
+  tackyMessages.appendChild(bubble);
+  tackyMessages.scrollTop = tackyMessages.scrollHeight;
+};
+
+const getTackyAnswer = (question) => {
+  const normalized = question.trim().toLowerCase();
+  const matched = tackyAnswers.find(({ keywords }) => keywords.some((keyword) => normalized.includes(keyword.toLowerCase())));
+  return matched?.answer || "ごめんね、その質問はまだ勉強中です！開催情報・アクセス・駐車場・屋台・タッキーのことなら答えられるよ。";
+};
+
+const openTackyChat = () => {
+  tackyChatbot?.classList.add("is-open");
+  tackyLauncher?.setAttribute("aria-expanded", "true");
+  tackyPanel?.setAttribute("aria-hidden", "false");
+  setTimeout(() => tackyInput?.focus(), 80);
+};
+
+const closeTackyChat = () => {
+  tackyChatbot?.classList.remove("is-open");
+  tackyLauncher?.setAttribute("aria-expanded", "false");
+  tackyPanel?.setAttribute("aria-hidden", "true");
+};
+
+const toggleTackyVisibility = () => {
+  if (!tackyChatbot) return;
+  const hero = document.querySelector(".hero");
+  const showAfter = hero ? Math.max(280, hero.offsetHeight - 120) : 520;
+  const shouldShow = window.scrollY > showAfter;
+  tackyChatbot.classList.toggle("is-visible", shouldShow);
+  if (!shouldShow) closeTackyChat();
+};
+
+window.addEventListener("scroll", toggleTackyVisibility, { passive: true });
+window.addEventListener("resize", toggleTackyVisibility);
+toggleTackyVisibility();
+
+const askTacky = (question) => {
+  if (!question.trim()) return;
+  addTackyMessage(question, "user");
+  window.setTimeout(() => addTackyMessage(getTackyAnswer(question), "bot"), 180);
+};
+
+tackyLauncher?.addEventListener("click", () => {
+  if (tackyChatbot?.classList.contains("is-open")) {
+    closeTackyChat();
+  } else {
+    openTackyChat();
+  }
+});
+
+tackyClose?.addEventListener("click", closeTackyChat);
+
+document.querySelectorAll("[data-tacky-question]").forEach((button) => {
+  button.addEventListener("click", () => askTacky(button.dataset.tackyQuestion || button.textContent));
+});
+
+tackyForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const question = tackyInput?.value || "";
+  askTacky(question);
+  if (tackyInput) tackyInput.value = "";
+});
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();
   if (event.key === "Escape") closeNav();
+  if (event.key === "Escape") closeTackyChat();
 });
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -120,6 +232,7 @@ if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
     });
 
     lenis.on("scroll", ScrollTrigger.update);
+    lenis.on("scroll", toggleTackyVisibility);
 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
