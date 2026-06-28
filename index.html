@@ -37,6 +37,24 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
   <body>
+    <div class="festival-loader" id="festival-loader" role="status" aria-live="polite" aria-label="ページを読み込んでいます">
+      <div class="festival-loader__glow" aria-hidden="true"></div>
+      <div class="festival-loader__lanterns" aria-hidden="true">
+        <span class="festival-loader__lantern festival-loader__lantern--one"></span>
+        <span class="festival-loader__lantern festival-loader__lantern--two"></span>
+        <span class="festival-loader__lantern festival-loader__lantern--three"></span>
+      </div>
+      <div class="festival-loader__sparks" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="festival-loader__content">
+        <p class="festival-loader__eyebrow">KAMO SUMMER FESTIVAL 2026</p>
+        <img class="festival-loader__title" src="image/hero-title.png" alt="かもであそぼう！こども夏祭り！TSUMUGU2">
+        <div class="festival-loader__countdown" aria-label="お祭りまでのカウントダウン"><span>お祭りまであと</span><strong><span data-loader-countdown-days>--</span>日！</strong></div>
+        <p class="festival-loader__copy">提灯に灯りをともしています</p>
+        <div class="festival-loader__bar" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
     <header class="site-header" aria-label="イベント概要">
       <a class="site-logo" href="#intro">かもであそぼう！こども夏祭り！~TSUMUGU2~</a>
       <button class="nav-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
@@ -211,7 +229,7 @@
             <article class="coming-zone-card coming-zone-card--event" id="event-area">
               <p class="coming-soon-panel__label">Coming Soon</p>
               <h3>イベントエリア</h3>
-              <p>暗闇のキャンバスなど、ワクワクするイベント情報を順次公開予定です。</p>
+              <p>イベントエリアの詳細は、内容が決まり次第こちらでお知らせします。</p>
             </article>
           </div>
         </div>
