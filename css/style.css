@@ -4203,3 +4203,48 @@ main,
     font-size: clamp(2.7rem, 15vw, 4.2rem);
   }
 }
+/* 2026-07-02: hero characters pop up after loading */
+.hero-characters img {
+  opacity: 0;
+  transform: translate3d(0, 32vh, 0) scale(.9);
+  transform-origin: 50% 100%;
+  transition:
+    opacity .34s ease,
+    transform .92s cubic-bezier(.19, 1.25, .34, 1);
+  will-change: transform, opacity;
+}
+
+body.is-hero-characters-entered .hero-characters img {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.hero-characters__boy {
+  transition-delay: .08s, .08s;
+}
+
+.hero-characters__girl {
+  transition-delay: .22s, .22s;
+}
+
+@media (max-width: 520px) {
+  .hero-characters img {
+    transform: translate3d(0, 26svh, 0) scale(.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-characters img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* 2026-07-02: ensure stagger timing for hero character entrance */
+.hero-characters img.hero-characters__boy {
+  transition-delay: .06s, .06s;
+}
+
+.hero-characters img.hero-characters__girl {
+  transition-delay: .24s, .24s;
+}

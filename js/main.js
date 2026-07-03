@@ -1,6 +1,7 @@
 const festivalLoader = document.querySelector(".festival-loader");
 const loaderCountdownDays = document.querySelector("[data-loader-countdown-days]");
 const loaderStartedAt = Date.now();
+const showHeroCharacters = () => document.body.classList.add("is-hero-characters-entered");
 if (loaderCountdownDays) {
   const loaderEventDate = new Date(2026, 7, 8);
   const loaderToday = new Date();
@@ -9,12 +10,17 @@ if (loaderCountdownDays) {
   loaderCountdownDays.textContent = String(Math.max(0, Math.ceil(loaderDiffMs / 86400000)));
 }
 const hideFestivalLoader = () => {
-  if (!festivalLoader || festivalLoader.classList.contains("is-done")) return;
+  if (!festivalLoader) {
+    showHeroCharacters();
+    return;
+  }
+  if (festivalLoader.classList.contains("is-done")) return;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const minimumDuration = reduceMotion ? 450 : 1500;
   const elapsed = Date.now() - loaderStartedAt;
   window.setTimeout(() => {
     festivalLoader.classList.add("is-done");
+    showHeroCharacters();
     window.setTimeout(() => {
       festivalLoader.setAttribute("hidden", "");
     }, reduceMotion ? 120 : 760);
