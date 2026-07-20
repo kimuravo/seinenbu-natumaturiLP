@@ -440,155 +440,89 @@ if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
   });
 }
 
-// 2026-07-05: flowing mobile feature slider
+// 2026-07-20: mobile feature slider, horizontal card slide without clipping
 (() => {
   const slider = document.querySelector(".feature-grid");
   if (!slider) return;
 
   const mobileQuery = window.matchMedia("(max-width: 760px)");
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let frameId = null;
-  let resumeTimer = null;
-  let isDragging = false;
-  let isPaused = false;
-  let startX = 0;
-  let startScrollLeft = 0;
-  let lastTime = 0;
-  let loopWidth = 0;
+  const cards = Array.from(slider.querySelectorAll(".feature-card:not(.is-feature-clone)"));
+  let activeIndex = 0;
+  let autoTimer = null;
 
-  const originalCards = Array.from(slider.querySelectorAll(".feature-card:not(.is-feature-clone)"));
-
-  const ensureClones = () => {
-    if (slider.querySelector(".is-feature-clone")) return;
-    originalCards.forEach((card) => {
-      const clone = card.cloneNode(true);
-      clone.classList.add("is-feature-clone");
-      clone.setAttribute("aria-hidden", "true");
-      slider.appendChild(clone);
-    });
+  const cleanupClones = () => {
+    slider.querySelectorAll(".feature-card.is-feature-clone").forEach((clone) => clone.remove());
   };
 
-  const getGap = () => Number.parseFloat(getComputedStyle(slider).columnGap || getComputedStyle(slider).gap || "0") || 0;
-
-  const measureLoop = () => {
-    const gap = getGap();
-    loopWidth = originalCards.reduce((total, card, index) => {
-      return total + card.getBoundingClientRect().width + (index < originalCards.length ? gap : 0);
-    }, 0);
-  };
-
+  const getGap = () => Number.parseFloat(getComputedStyle(slider).gap || "0") || 0;
   const getStep = () => {
-    const card = originalCards[0];
-    if (!card) return Math.round(slider.clientWidth * 0.8);
-    return Math.round(card.getBoundingClientRect().width + getGap());
+    const card = cards[0];
+    return card ? Math.round(card.getBoundingClientRect().width + getGap()) : slider.clientWidth;
   };
 
-  const normalizeScroll = () => {
-    if (!loopWidth) measureLoop();
-    if (!loopWidth) return;
-    while (slider.scrollLeft >= loopWidth) slider.scrollLeft -= loopWidth;
-    while (slider.scrollLeft < 0) slider.scrollLeft += loopWidth;
-  };
-
-  const stopFlow = () => {
-    if (frameId) window.cancelAnimationFrame(frameId);
-    frameId = null;
-    lastTime = 0;
-  };
-
-  const tick = (time) => {
-    if (!mobileQuery.matches || reduceMotionQuery.matches) {
-      stopFlow();
+  const showFeature = (index) => {
+    if (cards.length === 0) return;
+    activeIndex = (index + cards.length) % cards.length;
+    if (!mobileQuery.matches) {
+      slider.style.removeProperty("--feature-x");
+      cards.forEach((card) => card.setAttribute("aria-hidden", "false"));
       return;
     }
 
-    if (!isPaused && !isDragging) {
-      const delta = lastTime ? time - lastTime : 0;
-      slider.scrollLeft += delta * 0.032;
-      normalizeScroll();
-    }
-
-    lastTime = time;
-    frameId = window.requestAnimationFrame(tick);
+    slider.style.setProperty("--feature-x", `${-getStep() * activeIndex}px`);
+    cards.forEach((card, cardIndex) => {
+      card.setAttribute("aria-hidden", cardIndex === activeIndex ? "false" : "true");
+    });
   };
 
-  const startFlow = () => {
-    ensureClones();
-    measureLoop();
-    if (!mobileQuery.matches || reduceMotionQuery.matches || frameId) return;
-    frameId = window.requestAnimationFrame(tick);
+  const stopAuto = () => {
+    if (autoTimer) window.clearInterval(autoTimer);
+    autoTimer = null;
   };
 
-  const pauseFlow = () => {
-    isPaused = true;
-    if (resumeTimer) window.clearTimeout(resumeTimer);
+  const startAuto = () => {
+    stopAuto();
+    cleanupClones();
+    showFeature(activeIndex);
+    if (!mobileQuery.matches || reduceMotionQuery.matches || cards.length <= 1) return;
+    autoTimer = window.setInterval(() => showFeature(activeIndex + 1), 2600);
   };
 
-  const resumeFlow = (delay = 1200) => {
-    if (resumeTimer) window.clearTimeout(resumeTimer);
-    resumeTimer = window.setTimeout(() => {
-      isPaused = false;
-      startFlow();
-    }, delay);
-  };
-
-  slider.addEventListener("pointerdown", (event) => {
-    if (event.button !== undefined && event.button !== 0) return;
-    isDragging = true;
-    startX = event.clientX;
-    startScrollLeft = slider.scrollLeft;
-    slider.classList.add("is-dragging");
-    slider.setPointerCapture?.(event.pointerId);
-    pauseFlow();
-  });
-
-  slider.addEventListener("pointermove", (event) => {
-    if (!isDragging) return;
-    event.preventDefault();
-    slider.scrollLeft = startScrollLeft - (event.clientX - startX);
-    normalizeScroll();
-  });
-
-  const endDrag = (event) => {
-    if (!isDragging) return;
-    isDragging = false;
-    slider.classList.remove("is-dragging");
-    slider.releasePointerCapture?.(event.pointerId);
-    resumeFlow();
-  };
-
-  slider.addEventListener("pointerup", endDrag);
-  slider.addEventListener("pointercancel", endDrag);
-  slider.addEventListener("pointerleave", endDrag);
-  slider.addEventListener("mouseenter", pauseFlow);
-  slider.addEventListener("focusin", pauseFlow);
-  slider.addEventListener("mouseleave", () => resumeFlow());
-  slider.addEventListener("focusout", () => resumeFlow());
-  slider.addEventListener("wheel", () => resumeFlow(), { passive: true });
-  slider.addEventListener("touchstart", pauseFlow, { passive: true });
-  slider.addEventListener("touchend", () => resumeFlow(), { passive: true });
-
-  document.querySelector("[data-feature-slider-prev]")?.addEventListener("click", () => {
-    slider.scrollBy({ left: -getStep(), behavior: "smooth" });
-    normalizeScroll();
-    resumeFlow(1800);
-  });
-
-  document.querySelector("[data-feature-slider-next]")?.addEventListener("click", () => {
-    slider.scrollBy({ left: getStep(), behavior: "smooth" });
-    normalizeScroll();
-    resumeFlow(1800);
-  });
-
-  mobileQuery.addEventListener?.("change", () => {
-    stopFlow();
-    measureLoop();
-    startFlow();
-  });
-  window.addEventListener("resize", () => {
-    measureLoop();
-    normalizeScroll();
-  }, { passive: true });
-
-  startFlow();
+  document.querySelector("[data-feature-slider-prev]")?.addEventListener("click", () => showFeature(activeIndex - 1));
+  document.querySelector("[data-feature-slider-next]")?.addEventListener("click", () => showFeature(activeIndex + 1));
+  mobileQuery.addEventListener?.("change", startAuto);
+  window.addEventListener("resize", () => showFeature(activeIndex), { passive: true });
+  startAuto();
 })();
+
+// 2026-07-20: vendor photo slider controls
+document.querySelectorAll("[data-vendor-slider]").forEach((slider) => {
+  const dots = Array.from(slider.querySelectorAll("[data-vendor-slide-dot]"));
+  const prev = slider.querySelector("[data-vendor-slide-prev]");
+  const next = slider.querySelector("[data-vendor-slide-next]");
+  const slides = Array.from(slider.querySelectorAll(".vendor-photo-slider__track img"));
+  if (slides.length === 0) return;
+
+  let currentIndex = 0;
+
+  const showSlide = (index) => {
+    currentIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === currentIndex;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+    });
+    dots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === currentIndex));
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      showSlide(Number(dot.dataset.vendorSlideDot || 0));
+    });
+  });
+
+  prev?.addEventListener("click", () => showSlide(currentIndex - 1));
+  next?.addEventListener("click", () => showSlide(currentIndex + 1));
+  showSlide(0);
+});

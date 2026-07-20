@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Mochiy+Pop+P+One&family=Murecho:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260705-flowing-feature-slider">
+    <link rel="stylesheet" href="css/style.css?v=20260720-unify-pc-widths">
 </head>
   <body>
     <div class="festival-loader" id="festival-loader" role="status" aria-live="polite" aria-label="ページを読み込んでいます">
@@ -231,24 +231,40 @@
       <section id="shops" class="section section--cream">
         <div class="section__inner">
           <div class="section-title section-title--red">
-            <span>Coming Soon</span>
             <h2>出店・あそび</h2>
           </div>
-          <div class="coming-zone-grid">
-            <article class="coming-zone-card coming-zone-card--gourmet" id="gourmet-area">
-              <p class="coming-soon-panel__label">Coming Soon</p>
-              <h3>グルメエリア</h3>
-              <p>グルメ屋台とキッチンカーの情報は、決まり次第こちらでお知らせします。</p>
-            </article>
+          <div class="vendor-section vendor-section--gourmet" id="gourmet-area" aria-label="グルメエリアの出店者紹介">
+            <div class="vendor-section__heading">
+              <span>グルメエリア</span>
+            </div>
+            <div class="vendor-grid">
+              <button class="vendor-card" type="button" data-modal-open="vendor-sunnys-nara-modal">
+                <img src="image/vendor-sunnys-nara-main.png" alt="サニーズ奈良店のクレープ">
+                <span>サニーズ奈良店</span>
+              </button>
+              <button class="vendor-card" type="button" data-modal-open="vendor-kyoichi-takoyaki-modal">
+                <img src="image/vendor-kyoichi-takoyaki-main.jpg" alt="たこ焼き京一のたこ焼き">
+                <span>たこ焼き京一</span>
+              </button>
+            </div>
+            <p class="shops-update-note">更新中！</p>
+          </div>
+          <div class="vendor-section vendor-section--work" id="work-area" aria-label="職業体験エリアわーくワークの出店者紹介">
+            <div class="vendor-section__heading">
+              <span>職業体験エリアわーくワーク</span>
+            </div>
+            <div class="vendor-grid">
+              <button class="vendor-card" type="button" data-modal-open="vendor-sakaguchi-flower-modal">
+                <img src="image/vendor-sakaguchi-flower.jpg" alt="フラワーアレジメント体験の様子">
+                <span>フラワーアレジメント</span>
+              </button>
+            </div>
+            <p class="shops-update-note">更新中！</p>
+          </div>          <div class="coming-zone-grid">
             <article class="coming-zone-card coming-zone-card--seinembu" id="seinembu-area">
               <p class="coming-soon-panel__label">Coming Soon</p>
               <h3>青年部エリア</h3>
               <p>縁日・新商品・本部・屋台エリアの情報を、青年部エリアとしてまとめて公開します。</p>
-            </article>
-            <article class="coming-zone-card coming-zone-card--work" id="work-area">
-              <p class="coming-soon-panel__label">Coming Soon</p>
-              <h3>職業体験エリア<br>わーくワーク</h3>
-              <p>こどもも大人も楽しめる職業体験の詳細は、準備が整い次第お知らせします。</p>
             </article>
             <article class="coming-zone-card coming-zone-card--event" id="event-area">
               <p class="coming-soon-panel__label">Coming Soon</p>
@@ -359,8 +375,7 @@
       <div class="footer-contact">
         <h2>主催・お問い合わせ</h2>
         <p>主催：木津川市商工会青年部</p>
-        <p>後援：京都新聞</p>
-        <p>後援申請中：木津川市／木津川市教育委員会</p>
+        <p>後援：京都新聞／木津川市／木津川市教育委員会</p>
         <p>お問い合わせ：木津川市商工会青年部 夏祭り実行委員会</p>
         <p>TEL：0774-72-3801（事務局：田崎 / 松田 宛）</p>
         <p>受付時間：平日 9:00〜17:00</p>
@@ -397,6 +412,86 @@
         </form>
       </div>
     </section>
+    <div class="image-modal vendor-modal" id="vendor-sunnys-nara-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-sunnys-nara-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--prev" type="button" data-vendor-slide-prev aria-label="前の画像を見る">‹</button>
+            <div class="vendor-photo-slider__track">
+              <img src="image/vendor-sunnys-nara-main.png" alt="サニーズ奈良店の代表画像">
+              <img src="image/vendor-sunnys-nara-crepe.jpg" alt="サニーズ奈良店のマンゴークレープ写真">
+              <img src="image/vendor-sunnys-nara-banana.png" alt="サニーズ奈良店のバナナクレープ写真">
+            </div>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--next" type="button" data-vendor-slide-next aria-label="次の画像を見る">›</button>
+            <div class="vendor-photo-slider__dots" aria-label="画像を切り替える">
+              <button type="button" class="is-active" data-vendor-slide-dot="0" aria-label="代表画像を見る"></button>
+              <button type="button" data-vendor-slide-dot="1" aria-label="マンゴークレープを見る"></button>
+              <button type="button" data-vendor-slide-dot="2" aria-label="バナナクレープを見る"></button>
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">出店者情報</p>
+            <h2 id="vendor-sunnys-nara-title">サニーズ奈良店</h2>
+            <p class="vendor-modal__type"><strong>出店形態：</strong>キッチンカー</p>
+            <p class="vendor-modal__menu"><strong>メニュー：</strong>クレープ・かき氷・ドリンク</p>
+            <div class="vendor-modal__links">
+              <a href="http://sunnys-crepe.com" target="_blank" rel="noopener">公式サイト</a>
+              <a href="https://www.instagram.com/sunnys.nara" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal" id="vendor-kyoichi-takoyaki-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-kyoichi-takoyaki-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--prev" type="button" data-vendor-slide-prev aria-label="前の画像を見る">‹</button>
+            <div class="vendor-photo-slider__track">
+              <img src="image/vendor-kyoichi-takoyaki-main.jpg" alt="たこ焼き京一の代表画像">
+              <img src="image/vendor-kyoichi-takoyaki-stall.jpg" alt="たこ焼き京一の屋台写真">
+            </div>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--next" type="button" data-vendor-slide-next aria-label="次の画像を見る">›</button>
+            <div class="vendor-photo-slider__dots" aria-label="画像を切り替える">
+              <button type="button" class="is-active" data-vendor-slide-dot="0" aria-label="たこ焼き画像を見る"></button>
+              <button type="button" data-vendor-slide-dot="1" aria-label="屋台画像を見る"></button>
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">出店者情報</p>
+            <h2 id="vendor-kyoichi-takoyaki-title">たこ焼き京一</h2>
+            <p class="vendor-modal__type"><strong>出店形態：</strong>屋台</p>
+            <p class="vendor-modal__menu"><strong>メニュー：</strong>たこ焼き</p>
+            <div class="vendor-modal__links">
+              <a href="https://www.instagram.com/kyoichi.takoyaki/" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal" id="vendor-sakaguchi-flower-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-sakaguchi-flower-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <div class="vendor-photo-slider__track">
+              <img src="image/vendor-sakaguchi-flower.jpg" alt="フラワーアレジメント体験の様子">
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">職業体験エリアわーくワーク</p>
+            <h2 id="vendor-sakaguchi-flower-title">フラワーアレジメント</h2>
+            <p class="vendor-modal__type"><strong>出店：</strong>㈲阪口</p>
+            <p class="vendor-modal__menu"><strong>体験内容：</strong>たくさんの種類のお花から選んでアレンジする体験！</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <nav class="countdown-nav" aria-label="夏祭りカウントダウン">
       <a href="#info" class="countdown-nav__main">
         <span>お祭りまであと</span>
@@ -409,6 +504,6 @@
     <script src="js/lenis.min.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/main.js?v=20260705-flowing-feature-slider"></script>
+    <script src="js/main.js?v=20260720-unify-pc-widths"></script>
   </body>
 </html>
