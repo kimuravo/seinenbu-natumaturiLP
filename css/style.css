@@ -6546,3 +6546,35 @@ body.is-hero-characters-entered .hero-characters img {
 .vendor-section--seinembu .vendor-card::before {
   border-top-color: #ffd83d;
 }
+/* 2026-07-21: desktop vendor card column balance */
+@media (min-width: 980px) {
+  .vendor-section .vendor-grid {
+    width: min(100%, 960px);
+    margin-inline: auto;
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .vendor-section--gourmet .vendor-grid,
+  .vendor-section--seinembu .vendor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    max-width: 960px !important;
+    justify-content: center;
+  }
+
+  .vendor-section--work .vendor-grid {
+    grid-template-columns: minmax(0, 300px) !important;
+    max-width: 960px !important;
+    justify-content: center;
+  }
+
+  .vendor-card {
+    min-height: 100%;
+  }
+
+  .vendor-section--gourmet .vendor-card,
+  .vendor-section--work .vendor-card,
+  .vendor-section--seinembu .vendor-card {
+    max-width: none;
+  }
+}
