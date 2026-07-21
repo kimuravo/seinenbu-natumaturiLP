@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --font-body: "Murecho", "BIZ UDGothic", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", Meiryo, sans-serif;
   --font-display: "Murecho", "BIZ UDGothic", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   --navy: #062a63;
@@ -6371,4 +6371,178 @@ body.is-hero-characters-entered .hero-characters img {
     width: min(1120px, calc(100% - 32px));
     max-width: 1120px;
   }
+}
+
+/* 2026-07-21: additional gourmet vendors and full vertical image display */
+.vendor-card img.vendor-image--contain,
+.vendor-photo-slider__track img.vendor-image--contain {
+  object-fit: contain;
+  background: #151515;
+}
+
+.vendor-section--gourmet .vendor-grid {
+  grid-template-columns: repeat(2, minmax(220px, 280px));
+}
+
+@media (min-width: 980px) {
+  .vendor-section--gourmet .vendor-grid {
+    grid-template-columns: repeat(4, minmax(190px, 1fr));
+    max-width: 1120px;
+    margin-inline: auto;
+  }
+}
+
+/* 2026-07-21: gourmet area single-column vendor list */
+.vendor-section--gourmet .vendor-grid {
+  grid-template-columns: minmax(0, min(100%, 360px)) !important;
+  justify-content: center;
+}
+
+@media (min-width: 980px) {
+  .vendor-section--gourmet .vendor-grid {
+    grid-template-columns: minmax(0, 360px) !important;
+    max-width: 420px;
+  }
+}
+
+/* 2026-07-21: weekly topic video section */
+.topic-video-section {
+  background: #f8f7e9;
+  padding-top: clamp(28px, 5vw, 58px);
+}
+
+.topic-video-card {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  padding: clamp(12px, 2.5vw, 22px);
+  border: 4px solid #fff;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 14px 0 rgba(11, 87, 168, .12), 0 24px 42px rgba(24, 56, 77, .12);
+}
+
+.topic-video-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  background: #0b57a8;
+}
+
+.topic-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* 2026-07-21: topic note and seinembu area cards */
+.topic-video-note {
+  width: min(900px, 100%);
+  margin: -8px auto 18px;
+  color: #302823;
+  font-size: clamp(.82rem, 2.2vw, .95rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.vendor-section--seinembu {
+  margin-top: clamp(28px, 5vw, 48px);
+  margin-bottom: clamp(30px, 5vw, 54px);
+  padding: clamp(22px, 4vw, 34px);
+  border: 4px solid #fff;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #eaf2ff 0%, #dce9ff 100%);
+  box-shadow: 0 16px 0 rgba(11, 87, 168, .16), 0 24px 44px rgba(24, 56, 77, .12);
+}
+
+.vendor-section--seinembu .vendor-section__heading span {
+  background: #4770bd;
+}
+
+.vendor-section--seinembu .vendor-grid {
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.vendor-section--seinembu .vendor-card {
+  color: #244b9a;
+}
+
+.vendor-section--seinembu .vendor-card::after {
+  background: #4770bd;
+  box-shadow: 0 5px 0 rgba(36, 75, 154, .38);
+}
+
+.vendor-card__icon {
+  display: grid;
+  place-items: center;
+  min-height: 120px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffd83d 0%, #ffef9c 100%);
+  color: #244b9a;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.5vw, 1.9rem);
+  font-weight: 900;
+  box-shadow: inset 0 -8px 0 rgba(255, 255, 255, .38);
+}
+
+.vendor-card--stall .vendor-card__icon {
+  background: linear-gradient(135deg, #7bd0ed 0%, #d8f5ff 100%);
+}
+
+.vendor-card--secret .vendor-card__icon {
+  background: linear-gradient(135deg, #84bd52 0%, #dff5bc 100%);
+}
+
+.vendor-modal__hero--textonly {
+  display: block;
+  text-align: center;
+}
+
+.vendor-modal__hero--textonly .vendor-modal__type {
+  justify-content: center;
+}
+
+.vendor-modal--seinembu .vendor-modal__panel {
+  width: min(620px, calc(100vw - 28px));
+}
+
+@media (max-width: 760px) {
+  .vendor-section--seinembu {
+    padding: 20px 16px 24px;
+  }
+
+  .vendor-section--seinembu .vendor-grid {
+    grid-template-columns: minmax(0, min(100%, 320px));
+  }
+}
+
+/* 2026-07-21: imagegen assets for seinembu cards */
+.vendor-section--seinembu .vendor-card img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* 2026-07-21: match seinembu card image ratio to vendor cards */
+.vendor-section--seinembu .vendor-card img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* 2026-07-21: unify tap bubble color */
+.vendor-card::after,
+.vendor-section--work .vendor-card::after,
+.vendor-section--seinembu .vendor-card::after {
+  background: #ffd83d;
+  color: #1f3d8f;
+  box-shadow: 0 5px 0 rgba(31, 61, 143, 0.22);
+}
+
+.vendor-card::before,
+.vendor-section--work .vendor-card::before,
+.vendor-section--seinembu .vendor-card::before {
+  border-top-color: #ffd83d;
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
  <head>
     <meta charset="utf-8">
@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Mochiy+Pop+P+One&family=Murecho:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260720-unify-pc-widths">
+    <link rel="stylesheet" href="css/style.css?v=20260721-yellow-tap">
 </head>
   <body>
     <div class="festival-loader" id="festival-loader" role="status" aria-live="polite" aria-label="ページを読み込んでいます">
@@ -246,7 +246,14 @@
                 <img src="image/vendor-kyoichi-takoyaki-main.jpg" alt="たこ焼き京一のたこ焼き">
                 <span>たこ焼き京一</span>
               </button>
-            </div>
+                          <button class="vendor-card" type="button" data-modal-open="vendor-gorilla-kitchen-modal">
+                <img class="vendor-image--contain" src="image/vendor-gorilla-kitchen-main.jpg" alt="ゴリラキッチンのヘビーカステラ案内">
+                <span>ゴリラキッチン</span>
+              </button>
+              <button class="vendor-card" type="button" data-modal-open="vendor-hidachan-yakitori-modal">
+                <img src="image/vendor-hidachan-tacos-main.png" alt="ひだちゃんのやきとりのタコス">
+                <span>ひだちゃんのやきとり</span>
+              </button></div>
             <p class="shops-update-note">更新中！</p>
           </div>
           <div class="vendor-section vendor-section--work" id="work-area" aria-label="職業体験エリアわーくワークの出店者紹介">
@@ -260,12 +267,26 @@
               </button>
             </div>
             <p class="shops-update-note">更新中！</p>
+          </div>
+          <div class="vendor-section vendor-section--seinembu" id="seinembu-area" aria-label="青年部エリアの紹介">
+            <div class="vendor-section__heading">
+              <span>青年部エリア</span>
+            </div>
+            <div class="vendor-grid">
+              <button class="vendor-card vendor-card--festival" type="button" data-modal-open="vendor-seinembu-ennichi-modal">
+                <img src="image/seinembu-ennichi.jpg" alt="縁日の輪投げイメージ画像">
+                <span>縁日</span>
+              </button>
+              <button class="vendor-card vendor-card--stall" type="button" data-modal-open="vendor-seinembu-stall-modal">
+                <img src="image/seinembu-drink-ramune.jpg" alt="ラムネのイメージ画像">
+                <span>ドリンク</span>
+              </button>
+              <button class="vendor-card vendor-card--secret" type="button" data-modal-open="vendor-seinembu-secret-modal">
+                <img src="image/seinembu-secret.png" alt="たけのこ新商品のイメージ画像">
+                <span>たけのこ新商品</span>
+              </button>
+            </div>
           </div>          <div class="coming-zone-grid">
-            <article class="coming-zone-card coming-zone-card--seinembu" id="seinembu-area">
-              <p class="coming-soon-panel__label">Coming Soon</p>
-              <h3>青年部エリア</h3>
-              <p>縁日・新商品・本部・屋台エリアの情報を、青年部エリアとしてまとめて公開します。</p>
-            </article>
             <article class="coming-zone-card coming-zone-card--event" id="event-area">
               <p class="coming-soon-panel__label">Coming Soon</p>
               <h3>イベントエリア</h3>
@@ -285,6 +306,20 @@
             <p class="coming-soon-panel__label">近日公開</p>
             <h3>会場エリア案内は準備中です</h3>
             <p>会場内のエリア配置や各コーナーの場所は、確定次第こちらでお知らせします。</p>
+          </div>
+        </div>
+      </section>
+      <section class="section topic-video-section">
+        <div class="section__inner">
+          <div class="section-title section-title--red">
+            <span>Movie</span>
+            <h2>週刊地域トピックスにも告知出ています！</h2>
+          </div>
+          <p class="topic-video-note">※7/31(金)～8/6(木)までの放送です</p>
+          <div class="topic-video-card">
+            <div class="topic-video-frame">
+              <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -464,7 +499,7 @@
           <div>
             <p class="vendor-modal__label">出店者情報</p>
             <h2 id="vendor-kyoichi-takoyaki-title">たこ焼き京一</h2>
-            <p class="vendor-modal__type"><strong>出店形態：</strong>屋台</p>
+            <p class="vendor-modal__type"><strong>出店形態：</strong>キッチンカー</p>
             <p class="vendor-modal__menu"><strong>メニュー：</strong>たこ焼き</p>
             <div class="vendor-modal__links">
               <a href="https://www.instagram.com/kyoichi.takoyaki/" target="_blank" rel="noopener">Instagram</a>
@@ -473,7 +508,127 @@
         </div>
       </div>
     </div>
-    <div class="image-modal vendor-modal" id="vendor-sakaguchi-flower-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-sakaguchi-flower-title">
+    <div class="image-modal vendor-modal" id="vendor-gorilla-kitchen-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-gorilla-kitchen-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--prev" type="button" data-vendor-slide-prev aria-label="前の画像を見る">‹</button>
+            <div class="vendor-photo-slider__track">
+              <img class="vendor-image--contain" src="image/vendor-gorilla-kitchen-main.jpg" alt="ゴリラキッチンのヘビーカステラ案内">
+              <img class="vendor-image--contain" src="image/vendor-gorilla-kitchen-staff.jpg" alt="ゴリラキッチンの出店写真">
+            </div>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--next" type="button" data-vendor-slide-next aria-label="次の画像を見る">›</button>
+            <div class="vendor-photo-slider__dots" aria-label="画像を切り替える">
+              <button type="button" class="is-active" data-vendor-slide-dot="0" aria-label="ヘビーカステラ案内を見る"></button>
+              <button type="button" data-vendor-slide-dot="1" aria-label="出店写真を見る"></button>
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">出店者情報</p>
+            <h2 id="vendor-gorilla-kitchen-title">ゴリラキッチン</h2>
+            <p class="vendor-modal__type"><strong>出店形態：</strong>屋台</p>
+            <p class="vendor-modal__menu"><strong>メニュー：</strong>ヘビーカステラ</p>
+            <div class="vendor-modal__links">
+              <a href="https://www.instagram.com/gorillakitchen_gorillahouse/" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal" id="vendor-hidachan-yakitori-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-hidachan-yakitori-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--prev" type="button" data-vendor-slide-prev aria-label="前の画像を見る">‹</button>
+            <div class="vendor-photo-slider__track">
+              <img src="image/vendor-hidachan-tacos-main.png" alt="ひだちゃんのやきとりのタコス調理写真">
+              <img src="image/vendor-hidachan-tacos-close.png" alt="ひだちゃんのやきとりのタコス写真">
+            </div>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--next" type="button" data-vendor-slide-next aria-label="次の画像を見る">›</button>
+            <div class="vendor-photo-slider__dots" aria-label="画像を切り替える">
+              <button type="button" class="is-active" data-vendor-slide-dot="0" aria-label="タコス調理写真を見る"></button>
+              <button type="button" data-vendor-slide-dot="1" aria-label="タコス写真を見る"></button>
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">出店者情報</p>
+            <h2 id="vendor-hidachan-yakitori-title">ひだちゃんのやきとり</h2>
+            <p class="vendor-modal__type"><strong>出店形態：</strong>屋台</p>
+            <p class="vendor-modal__menu"><strong>メニュー：</strong>かき氷・焼きそば・タコス</p>
+            <div class="vendor-modal__links">
+              <a href="https://www.instagram.com/hidachanno_yakitori" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    <div class="image-modal vendor-modal vendor-modal--seinembu" id="vendor-seinembu-ennichi-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-seinembu-ennichi-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <div class="vendor-photo-slider__track">
+              <img src="image/seinembu-ennichi.jpg" alt="縁日の輪投げイメージ画像">
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">青年部エリア</p>
+            <h2 id="vendor-seinembu-ennichi-title">縁日</h2>
+            <p class="vendor-modal__type"><strong>内容：</strong>スマートボール・輪投げ</p>
+            <p class="vendor-modal__menu">昔ながらの縁日あそびを楽しめるコーナーです。家族や友だちと一緒に挑戦してみてください。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal vendor-modal--seinembu" id="vendor-seinembu-stall-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-seinembu-stall-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--prev" type="button" data-vendor-slide-prev aria-label="前の画像を見る">‹</button>
+            <div class="vendor-photo-slider__track">
+              <img src="image/seinembu-drink-ramune.jpg" alt="ラムネのイメージ画像">
+              <img src="image/seinembu-drink-beer.jpg" alt="ビールのイメージ画像">
+            </div>
+            <button class="vendor-photo-slider__arrow vendor-photo-slider__arrow--next" type="button" data-vendor-slide-next aria-label="次の画像を見る">›</button>
+            <div class="vendor-photo-slider__dots" aria-label="画像を切り替える">
+              <button type="button" class="is-active" data-vendor-slide-dot="0" aria-label="ラムネの画像を見る"></button>
+              <button type="button" data-vendor-slide-dot="1" aria-label="ビールの画像を見る"></button>
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">青年部エリア</p>
+            <h2 id="vendor-seinembu-stall-title">ドリンク</h2>
+            <p class="vendor-modal__type"><strong>メニュー：</strong>ビール・ラムネ・お茶</p>
+            <p class="vendor-modal__menu">青年部エリアで楽しめるドリンク屋台です。お祭りの休憩にもご利用ください。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal vendor-modal--seinembu" id="vendor-seinembu-secret-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-seinembu-secret-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <div class="vendor-photo-slider__track">
+              <img src="image/seinembu-secret.png" alt="たけのこ新商品のイメージ画像">
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">青年部エリア</p>
+            <h2 id="vendor-seinembu-secret-title">たけのこ新商品</h2>
+            <p class="vendor-modal__type"><strong>内容：</strong>たけのこ新商品</p>
+            <p class="vendor-modal__menu">木津川市商工会青年部が準備している、たけのこを使った新商品です。詳細は当日までのお楽しみです。</p>
+          </div>
+        </div>
+      </div>
+    </div>    <div class="image-modal vendor-modal" id="vendor-sakaguchi-flower-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-sakaguchi-flower-title">
       <div class="image-modal__backdrop" data-modal-close></div>
       <div class="image-modal__panel vendor-modal__panel">
         <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
@@ -504,6 +659,6 @@
     <script src="js/lenis.min.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/main.js?v=20260720-unify-pc-widths"></script>
+    <script src="js/main.js?v=20260721-reapply-photo"></script>
   </body>
 </html>
