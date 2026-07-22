@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Mochiy+Pop+P+One&family=Murecho:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260722-event-canvas">
+    <link rel="stylesheet" href="css/style.css?v=20260722-tacky-visible-open">
 </head>
   <body>
     <div class="festival-loader" id="festival-loader" role="status" aria-live="polite" aria-label="ページを読み込んでいます">
@@ -188,7 +188,7 @@
               </figure>
               <h3>🍧 味わって楽しむ</h3>
               <p><strong>グルメ屋台やキッチンカーが大集合！</strong></p>
-              <p>お祭りならではの“食”で満たされよう！</p>
+              <p><strong>お祭りならではの“食”で満たされよう！</strong></p>
             </article>
             </div>
             <button class="feature-slider__arrow feature-slider__arrow--next" type="button" aria-label="次のポイントを見る" data-feature-slider-next>›</button>
@@ -444,12 +444,15 @@
           <p class="tacky-chatbot__message tacky-chatbot__message--bot">こんにちは！夏祭りのこと、ぼくに聞いてね。下のボタンからも選べるよ！</p>
         </div>
         <div class="tacky-chatbot__quick" aria-label="よくある質問">
-          <button type="button" data-tacky-question="開催情報">開催情報</button>
+          <button type="button" data-tacky-question="開催時間">開催時間</button>
           <button type="button" data-tacky-question="アクセス">アクセス</button>
-          <button type="button" data-tacky-question="駐車場">駐車場</button>
+          <button type="button" data-tacky-question="屋台">屋台</button>
+          <button type="button" data-tacky-question="体験">体験</button>
+          <button type="button" data-tacky-question="雨の日">雨の日</button>
           <button type="button" data-tacky-question="タッキー">タッキーは来る？</button>
-        </div>
-        <form class="tacky-chatbot__form">
+          <button type="button" data-tacky-question="タッキーのおすすめ">タッキーのおすすめ</button>
+          <button type="button" data-tacky-question="駐車場">駐車場</button>
+        </div>        <form class="tacky-chatbot__form">
           <label class="sr-only" for="tacky-chatbot-input">たけのこタッキーへの質問</label>
           <input id="tacky-chatbot-input" type="text" name="message" placeholder="質問を入力してね" autocomplete="off">
           <button type="submit">送信</button>
@@ -705,6 +708,6 @@
     <script src="js/lenis.min.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/main.js?v=20260721-reapply-photo"></script>
+    <script src="js/main.js?v=20260722-tacky-typing"></script>
   </body>
 </html>

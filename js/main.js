@@ -1,4 +1,4 @@
-const festivalLoader = document.querySelector(".festival-loader");
+﻿const festivalLoader = document.querySelector(".festival-loader");
 const loaderCountdownDays = document.querySelector("[data-loader-countdown-days]");
 const loaderStartedAt = Date.now();
 const showHeroCharacters = () => document.body.classList.add("is-hero-characters-entered");
@@ -152,52 +152,70 @@ const tackyInput = document.querySelector("#tacky-chatbot-input");
 
 const tackyAnswers = [
   {
-    keywords: ["開催", "日時", "日程", "いつ", "時間"],
-    answer: "開催日は2026年8月8日（土）※小雨決行・荒天中止　9日（日）予備日、時間は16:00〜20:30だよ！",
+    keywords: ["開催", "日時", "日程", "いつ", "時間", "開催時間"],
+    answer: "2026年8月8日（土）16:00〜20:30だよ！※小雨決行・荒天中止、9日（日）が予備日だよ。",
   },
   {
     keywords: ["場所", "会場", "どこ", "須田", "公園"],
-    answer: "会場は木津川市加茂町の須田公園だよ。JR加茂駅から徒歩5〜10分です！",
+    answer: "会場は木津川市加茂町の須田公園だよ！夏の思い出をつくりに来てね。",
   },
   {
     keywords: ["アクセス", "駅", "行き方", "電車"],
-    answer: "JR加茂駅から徒歩5〜10分だよ。アクセス情報のところに地図もあるから見てみてね！",
+    answer: "JR加茂駅から徒歩5〜10分くらいだよ。アクセス情報の地図も見てみてね！",
   },
   {
-    keywords: ["駐車", "車", "パーキング"],
-    answer: "専用駐車場のご用意はありません。お近くのコインパーキング、または公共交通機関をご利用ください。",
+    keywords: ["駐車", "車", "パーキング", "駐車場"],
+    answerHtml: '専用駐車場はないよ。近くのコインパーキングか、できるだけ公共交通機関で来てね。<br><a href="https://toku-p.earth-car.com/parking-search/34.751043-135.869815-16/2026%E3%80%80%E3%81%8B%E3%82%82%E3%81%A7%E3%81%82%E3%81%9D%E3%81%BC%E3%81%86%EF%BC%81%E3%81%93%E3%81%A9%E3%82%82%E5%A4%8F%E7%A5%AD%E3%82%8A%EF%BC%81%EF%BD%9ETSUMUGU2%EF%BD%9E" target="_blank" rel="noopener">近くの駐車場を探す</a>',
   },
   {
+    keywords: ["タッキーのおすすめ", "おすすめ", "オススメ", "たけのこ新商品", "新商品"],
+    answer: "たけのこ新商品！！たのしみ～🌟",
+  },  {
     keywords: ["タッキー", "たけのこ", "来る", "キャラ"],
     answer: "タッキーは皆が願ってくれたら来るかもね！！会場で会えたらラッキー！",
   },
   {
     keywords: ["お金", "料金", "入場", "無料"],
-    answer: "入場は無料です！屋台など一部お金がかかるコーナーがあります。",
+    answer: "入場は無料だよ！屋台や一部コーナーではお金がかかるものもあるよ。",
   },
   {
-    keywords: ["屋台", "食べ物", "グルメ", "キッチンカー"],
-    answer: "グルメ屋台やキッチンカーが大集合予定！お祭りならではの“食”を楽しんでね。",
+    keywords: ["屋台", "食べ物", "グルメ", "キッチンカー", "メニュー"],
+    answer: "クレープ、たこ焼き、ヘビーカステラ、タコス、鮎の塩焼きなどがあるよ！今後も更新予定だよ。",
   },
   {
-    keywords: ["遊び", "縁日", "体験", "イベント", "職業"],
-    answer: "縁日あそび、暗闇職業体験、アートイベントなど、家族みんなで楽しめる内容を準備中です！",
+    keywords: ["遊び", "縁日", "体験", "イベント", "職業", "わーくワーク", "キャンバス"],
+    answer: "縁日、職業体験わーくワーク、暗闇のキャンバスなど、こどもが楽しめる体験を準備しているよ！",
+  },
+  {
+    keywords: ["雨", "天気", "荒天", "中止", "予備日", "雨の日"],
+    answer: "小雨決行、荒天中止だよ。荒天の場合は9日（日）が予備日だよ。",
   },
 ];
 
 const addTackyMessage = (message, type = "bot") => {
-  if (!tackyMessages) return;
+  if (!tackyMessages) return null;
   const bubble = document.createElement("p");
   bubble.className = `tacky-chatbot__message tacky-chatbot__message--${type}`;
-  bubble.textContent = message;
+  if (message && typeof message === "object" && "html" in message) {
+    bubble.innerHTML = message.html;
+  } else {
+    bubble.textContent = message;
+  }
   tackyMessages.appendChild(bubble);
   tackyMessages.scrollTop = tackyMessages.scrollHeight;
+  return bubble;
+};
+
+const showTackyTyping = () => {
+  const bubble = addTackyMessage({ html: '<span class="tacky-chatbot__typing-text">入力中です！</span><span class="tacky-chatbot__typing-dots" aria-hidden="true"><span></span><span></span><span></span></span>' }, "bot");
+  bubble?.classList.add("tacky-chatbot__message--typing");
+  return bubble;
 };
 
 const getTackyAnswer = (question) => {
   const normalized = question.trim().toLowerCase();
   const matched = tackyAnswers.find(({ keywords }) => keywords.some((keyword) => normalized.includes(keyword.toLowerCase())));
-  return matched?.answer || "ごめんね、その質問はまだ勉強中です！開催情報・アクセス・駐車場・屋台・タッキーのことなら答えられるよ。";
+  return matched ? (matched.answerHtml ? { html: matched.answerHtml } : matched.answer) : "ごめんね、その質問はまだ勉強中です！開催時間・アクセス・駐車場・屋台・体験・雨の日・タッキーのことなら答えられるよ。";
 };
 
 const openTackyChat = () => {
@@ -229,7 +247,11 @@ toggleTackyVisibility();
 const askTacky = (question) => {
   if (!question.trim()) return;
   addTackyMessage(question, "user");
-  window.setTimeout(() => addTackyMessage(getTackyAnswer(question), "bot"), 180);
+  const typingBubble = showTackyTyping();
+  window.setTimeout(() => {
+    typingBubble?.remove();
+    addTackyMessage(getTackyAnswer(question), "bot");
+  }, 760);
 };
 
 tackyLauncher?.addEventListener("click", () => {
