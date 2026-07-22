@@ -6578,3 +6578,135 @@ body.is-hero-characters-entered .hero-characters img {
     max-width: none;
   }
 }
+/* 2026-07-22: match work card size */
+@media (min-width: 980px) {
+  .vendor-section--work .vendor-grid {
+    grid-template-columns: minmax(0, 305px) !important;
+  }
+}
+/* 2026-07-22: reduce feature section bottom gap */
+.feature-section {
+  padding-bottom: clamp(56px, 7vw, 90px) !important;
+}
+
+.feature-slider {
+  padding-bottom: 0 !important;
+}
+
+.feature-slider .feature-grid {
+  padding-bottom: 24px !important;
+}
+
+@media (min-width: 980px) {
+  .feature-slider .feature-grid {
+    padding-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .feature-section {
+    padding-bottom: 72px !important;
+  }
+
+  .feature-slider .feature-grid {
+    padding-bottom: 28px !important;
+  }
+}
+/* 2026-07-22: balance feature section bottom breathing room */
+.feature-section {
+  padding-bottom: clamp(96px, 10vw, 135px) !important;
+}
+
+.feature-slider .feature-grid {
+  padding-bottom: 34px !important;
+}
+
+@media (min-width: 980px) {
+  .feature-section {
+    padding-bottom: clamp(110px, 10vw, 145px) !important;
+  }
+
+  .feature-slider .feature-grid {
+    padding-bottom: 24px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .feature-section {
+    padding-bottom: 104px !important;
+  }
+
+  .feature-slider .feature-grid {
+    padding-bottom: 34px !important;
+  }
+}
+/* 2026-07-22: match work area visual block size */
+@media (min-width: 980px) {
+  .vendor-section--work .vendor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    max-width: 960px !important;
+    width: min(100%, 960px);
+  }
+
+  .vendor-section--work .vendor-card {
+    grid-column: 2;
+    min-height: 100%;
+  }
+
+  .vendor-section--work .vendor-card img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 979px) {
+  .vendor-section--work .vendor-grid {
+    grid-template-columns: minmax(0, min(100%, 320px)) !important;
+  }
+}
+/* 2026-07-22: event area canvas card */
+.vendor-section--event {
+  margin-top: clamp(28px, 5vw, 48px);
+  margin-bottom: clamp(30px, 5vw, 54px);
+  padding: clamp(22px, 4vw, 34px);
+  border: 4px solid #fff;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #f2ecff 0%, #e5dcff 100%);
+  box-shadow: 0 16px 0 rgba(111, 76, 196, .18), 0 24px 44px rgba(24, 56, 77, .12);
+}
+
+.vendor-section--event .vendor-section__heading span {
+  background: #6f4cc4;
+}
+
+.vendor-section--event .vendor-card {
+  color: #4d318f;
+}
+
+.vendor-section--event .vendor-card::after {
+  background: #ffd83d;
+  color: #1f3d8f;
+  box-shadow: 0 5px 0 rgba(31, 61, 143, 0.22);
+}
+
+.vendor-section--event .vendor-card::before {
+  border-top-color: #ffd83d;
+}
+
+@media (min-width: 980px) {
+  .vendor-section--event .vendor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    max-width: 960px !important;
+    width: min(100%, 960px);
+    margin-inline: auto;
+  }
+
+  .vendor-section--event .vendor-card {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 979px) {
+  .vendor-section--event .vendor-grid {
+    grid-template-columns: minmax(0, min(100%, 320px)) !important;
+  }
+}

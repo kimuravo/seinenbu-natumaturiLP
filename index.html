@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Mochiy+Pop+P+One&family=Murecho:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260721-toyochan">
+    <link rel="stylesheet" href="css/style.css?v=20260722-event-canvas">
 </head>
   <body>
     <div class="festival-loader" id="festival-loader" role="status" aria-live="polite" aria-label="ページを読み込んでいます">
@@ -231,7 +231,7 @@
       <section id="shops" class="section section--cream">
         <div class="section__inner">
           <div class="section-title section-title--red">
-            <h2>出店・あそび</h2>
+            <h2>出店・あそび・体験</h2>
           </div>
           <div class="vendor-section vendor-section--gourmet" id="gourmet-area" aria-label="グルメエリアの出店者紹介">
             <div class="vendor-section__heading">
@@ -290,12 +290,17 @@
                 <span>たけのこ新商品</span>
               </button>
             </div>
-          </div>          <div class="coming-zone-grid">
-            <article class="coming-zone-card coming-zone-card--event" id="event-area">
-              <p class="coming-soon-panel__label">Coming Soon</p>
-              <h3>イベントエリア</h3>
-              <p>イベントエリアの詳細は、内容が決まり次第こちらでお知らせします。</p>
-            </article>
+          </div>
+          <div class="vendor-section vendor-section--event" id="event-area" aria-label="イベントエリアの紹介">
+            <div class="vendor-section__heading">
+              <span>イベントエリア</span>
+            </div>
+            <div class="vendor-grid">
+              <button class="vendor-card" type="button" data-modal-open="event-kurayami-canvas-modal">
+                <img src="image/event-kurayami-canvas.jpg" alt="暗闇のキャンバスの様子">
+                <span>暗闇のキャンバス</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -649,6 +654,23 @@
             <h2 id="vendor-seinembu-secret-title">たけのこ新商品</h2>
             <p class="vendor-modal__type"><strong>内容：</strong>たけのこ新商品</p>
             <p class="vendor-modal__menu">木津川市商工会青年部が準備している、たけのこを使った新商品です。詳細は当日までのお楽しみです。</p>
+          </div>
+        </div>
+      </div>
+    </div>    <div class="image-modal vendor-modal vendor-modal--event" id="event-kurayami-canvas-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-kurayami-canvas-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <div class="vendor-photo-slider__track">
+              <img src="image/event-kurayami-canvas.jpg" alt="暗闇のキャンバスの様子">
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">イベントエリア</p>
+            <h2 id="event-kurayami-canvas-title">暗闇のキャンバス</h2>
+            <p class="vendor-modal__menu">公園内に設置した大きなキャンバスに、蛍光チョークで自由にお絵描き。日が暮れてブラックライトを当てると、自分たちが描いた絵が光って浮かび上がる！ふしぎ！</p>
           </div>
         </div>
       </div>
