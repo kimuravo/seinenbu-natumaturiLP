@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Mochiy+Pop+P+One&family=Murecho:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260722-tacky-visible-open">
+    <link rel="stylesheet" href="css/style.css?v=20260724-night-photo-no-shop-label">
 </head>
   <body>
     <div class="festival-loader" id="festival-loader" role="status" aria-live="polite" aria-label="ページを読み込んでいます">
@@ -269,8 +269,19 @@
                 <img src="image/vendor-sakaguchi-flower.jpg" alt="フラワーアレジメント体験の様子">
                 <span>フラワーアレジメント</span>
               </button>
+              <button class="vendor-card" type="button" data-modal-open="vendor-nishimoto-sticker-modal">
+                <img src="image/vendor-nishimoto-sticker.png" alt="シールづくり体験のイメージ画像">
+                <span>シールづくり</span>
+              </button>
+              <button class="vendor-card" type="button" data-modal-open="vendor-kyoichiya-tshirt-modal">
+                <img src="image/vendor-kyoichiya-tshirt.png" alt="Tシャツカッティング体験のイメージ画像">
+                <span>Tシャツカッティング</span>
+              </button>
+              <button class="vendor-card" type="button" data-modal-open="vendor-night-photographer-modal">
+                <img src="image/vendor-night-photographer.jpg" alt="夜のカメラマン体験の光のアート写真">
+                <span>夜のカメラマン</span>
+              </button>
             </div>
-            <p class="shops-update-note">更新中！</p>
           </div>
           <div class="vendor-section vendor-section--seinembu" id="seinembu-area" aria-label="青年部エリアの紹介">
             <div class="vendor-section__heading">
@@ -612,7 +623,7 @@
             <p class="vendor-modal__label">青年部エリア</p>
             <h2 id="vendor-seinembu-ennichi-title">縁日</h2>
             <p class="vendor-modal__type"><strong>内容：</strong>スマートボール・輪投げ</p>
-            <p class="vendor-modal__menu">昔ながらの縁日あそびを楽しめるコーナーです。家族や友だちと一緒に挑戦してみてください。</p>
+            <p class="vendor-modal__menu">昔ながらの縁日あそびを楽しめるコーナーです。家族や友だちと一緒に挑戦してみてください。豪華な景品を準備しています！🌟</p>
           </div>
         </div>
       </div>
@@ -693,6 +704,66 @@
             <h2 id="vendor-sakaguchi-flower-title">フラワーアレジメント</h2>
             <p class="vendor-modal__type"><strong>出店：</strong>㈲阪口</p>
             <p class="vendor-modal__menu"><strong>体験内容：</strong>たくさんの種類のお花から選んでアレンジする体験！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal" id="vendor-nishimoto-sticker-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-nishimoto-sticker-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <div class="vendor-photo-slider__track">
+              <img src="image/vendor-nishimoto-sticker.png" alt="シールづくり体験のイメージ画像">
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">職業体験エリアわーくワーク</p>
+            <h2 id="vendor-nishimoto-sticker-title">シールづくり</h2>
+            <p class="vendor-modal__type"><strong>出店：</strong>ニシモト広告</p>
+            <p class="vendor-modal__menu">街の看板屋さんです！ぜひあそびにきてください！</p>
+            <p class="vendor-modal__menu"><strong>体験内容：</strong>シールステッカーをその場でつくれる！好きな絵柄でシールをつくる体験！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal" id="vendor-kyoichiya-tshirt-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-kyoichiya-tshirt-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <div class="vendor-photo-slider__track">
+              <img src="image/vendor-kyoichiya-tshirt.png" alt="Tシャツカッティング体験のイメージ画像">
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">職業体験エリアわーくワーク</p>
+            <h2 id="vendor-kyoichiya-tshirt-title">Tシャツカッティング</h2>
+            <p class="vendor-modal__type"><strong>出店：</strong>㈱京一屋</p>
+            <p class="vendor-modal__menu">京一屋プリント工房！<br>1枚からオリジナルプリントTシャツが作成可能です！👕</p>
+            <p class="vendor-modal__menu"><strong>体験内容：</strong>好きな色や形を選んで、カッティングシートでTシャツをデザイン！世界にひとつだけのオリジナルTシャツづくりを楽しめます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-modal vendor-modal" id="vendor-night-photographer-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-night-photographer-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel vendor-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="詳細を閉じる">×</button>
+        <div class="vendor-modal__hero">
+          <div class="vendor-photo-slider" data-vendor-slider>
+            <div class="vendor-photo-slider__track">
+              <img src="image/vendor-night-photographer.jpg" alt="夜のカメラマン体験の光のアート写真">
+            </div>
+          </div>
+          <div>
+            <p class="vendor-modal__label">職業体験エリアわーくワーク</p>
+            <h2 id="vendor-night-photographer-title">夜のカメラマン</h2>
+            <p class="vendor-modal__menu"><strong>本業はカメラ屋さんじゃないです。</strong></p>
+            <p class="vendor-modal__menu">皆さんも体験後に自分でチャレンジして下さい。</p>
+            <p class="vendor-modal__menu"><strong>体験内容：</strong>暗闇の中でペンライトを使って自由に光のアートを描き、長時間露光で幻想的な写真を撮影する<strong>照明技師体験！</strong></p>
           </div>
         </div>
       </div>

@@ -7116,3 +7116,27 @@ body.is-hero-characters-entered .hero-characters img {
     max-height: min(190px, 24dvh);
   }
 }
+/* 2026-07-23: match seinembu modal size to other vendor modals */
+@media (min-width: 761px) {
+  .vendor-modal--seinembu .vendor-modal__panel {
+    width: min(820px, calc(100vw - 28px));
+  }
+}
+/* 2026-07-23: desktop 4-column gourmet and work grids */
+@media (min-width: 980px) {
+  .vendor-section--gourmet .vendor-grid,
+  .vendor-section--work .vendor-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    width: min(100%, 1120px) !important;
+    max-width: 1120px !important;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .vendor-section--gourmet .vendor-card,
+  .vendor-section--work .vendor-card {
+    grid-column: auto !important;
+    max-width: none;
+    min-height: 100%;
+  }
+}
