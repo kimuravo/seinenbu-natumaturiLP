@@ -7140,3 +7140,28 @@ body.is-hero-characters-entered .hero-characters img {
     min-height: 100%;
   }
 }
+/* 2026-07-31: fallback link for weekly topic video */
+.topic-video-link {
+  margin: 14px 0 0;
+  text-align: center;
+}
+
+.topic-video-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: #315aa8;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 5px 0 #203d79;
+}
+
+.topic-video-link a:hover,
+.topic-video-link a:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 #203d79;
+}
