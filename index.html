@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Mochiy+Pop+P+One&family=Murecho:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260731-topic-kcn-video-fix">
+    <link rel="stylesheet" href="css/style.css?v=20260803-area-map-zoom">
 </head>
   <body>
     <div class="festival-loader" id="festival-loader" role="status" aria-live="polite" aria-label="ページを読み込んでいます">
@@ -328,14 +328,12 @@
       <section id="map" class="section">
         <div class="section__inner">
           <div class="section-title">
-            <span>Coming Soon</span>
             <h2>エリア案内</h2>
           </div>
-          <div class="coming-soon-panel coming-soon-panel--map">
-            <p class="coming-soon-panel__label">近日公開</p>
-            <h3>会場エリア案内は準備中です</h3>
-            <p>会場内のエリア配置や各コーナーの場所は、確定次第こちらでお知らせします。</p>
-          </div>
+          <button class="venue-map-button" type="button" data-modal-open="venue-map-modal">
+            <img src="image/venue-map.png?v=20260803-area-map" alt="須田公園の会場エリア案内マップ">
+            <span>拡大して見る</span>
+          </button>
         </div>
       </section>
       <section class="section topic-video-section">
@@ -480,6 +478,14 @@
         </form>
       </div>
     </section>
+    <div class="image-modal venue-map-modal" id="venue-map-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="venue-map-modal-title">
+      <div class="image-modal__backdrop" data-modal-close></div>
+      <div class="image-modal__panel venue-map-modal__panel">
+        <button class="image-modal__close" type="button" data-modal-close aria-label="会場マップを閉じる">×</button>
+        <h2 id="venue-map-modal-title" class="venue-map-modal__title">エリア案内</h2>
+        <img src="image/venue-map.png?v=20260803-area-map" alt="須田公園の会場エリア案内マップ拡大表示">
+      </div>
+    </div>
     <div class="image-modal vendor-modal" id="vendor-sunnys-nara-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vendor-sunnys-nara-title">
       <div class="image-modal__backdrop" data-modal-close></div>
       <div class="image-modal__panel vendor-modal__panel">
@@ -776,6 +782,9 @@
             <p class="vendor-modal__type"><strong>出店：</strong>ニシモト広告</p>
             <p class="vendor-modal__menu">街の看板屋さんです！ぜひあそびにきてください！</p>
             <p class="vendor-modal__menu"><strong>体験内容：</strong>シールステッカーをその場でつくれる！好きな絵柄でシールをつくる体験！</p>
+            <div class="vendor-modal__links">
+              <a href="https://www.instagram.com/nishimoto.ad" target="_blank" rel="noopener">Instagram</a>
+            </div>
           </div>
         </div>
       </div>
@@ -796,6 +805,10 @@
             <p class="vendor-modal__type"><strong>出店：</strong>㈱京一屋</p>
             <p class="vendor-modal__menu">京一屋プリント工房！<br>1枚からオリジナルプリントTシャツが作成可能です！👕</p>
             <p class="vendor-modal__menu"><strong>体験内容：</strong>好きな色や形を選んで、カッティングシートでTシャツをデザイン！世界にひとつだけのオリジナルTシャツづくりを楽しめます。</p>
+            <div class="vendor-modal__links">
+              <a href="https://kyoichiya.com/" target="_blank" rel="noopener">公式サイト</a>
+              <a href="https://www.instagram.com/kyoichiya.print" target="_blank" rel="noopener">Instagram</a>
+            </div>
           </div>
         </div>
       </div>
